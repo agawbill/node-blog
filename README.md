@@ -1,0 +1,2 @@
+# node-blog
+This is a blog app I created using the Node.js runtime and the Express Node framework. I wanted to demonstrate proficiency performing CRUD,  utilizing Mongoose,  MongoDB (through mLab), creating models, views, routes, an image uploader, implementing a rich text editor, etc.  I also utilized a number of AWS services when creating this app (Cognito for the user verification, images are uploaded by users to an S3 bucket, and it was deployed using Elastic Beanstalk).
