@@ -1,0 +1,155 @@
+<html>
+    <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="/stylesheets/dash.css" />
+      <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+      <META HTTP-EQUIV="Expires" CONTENT="-1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Anthony's Blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Blogs </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signout">Log out</a>
+            </li>
+
+          </ul>
+          <span class="navbar-text">
+            User: <%=cognitoUser%>
+          </span>
+        </div>
+      </nav>
+      <p>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4" id="myPost">
+            <div class="card">
+              <div class="card-header">
+                <span class="myPostings">My Posts</span>
+              </div>
+              <div class="card-body">
+                <ul class="list-group list-group-flush" id="lists">
+
+                </ul>
+                <button id="addMore" class="btn btn-primary">More Posts</button>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5" id="composeBlog">
+
+            <div class="card">
+              <div class="card-header">
+                <span class="myPostings">Compose</span>
+              </div>
+              <div class="card-body">
+                Title: <form action="addpost" method="POST">
+                  <div class="form-group">
+                    <input type="title" name="title" class="form-control"></input>
+                  </div>
+                <p>
+                <div class="form-group">
+                    <textarea class="form-control" id="mytextarea" name="body" rows="16"></textarea><br>
+                    <input type="hidden" name="username" value=<%= cognitoUser %>>
+                    <input type="submit" value="Add Post" class="btn btn-primary" id="addPost" />
+                </div>
+                </form>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p>
+
+
+
+      <div class="uploadContainer" id="uploadImage">
+
+        <div class="card">
+          <div class="card-header" id="uploadHeader"><span id="UpDown2">Upload Image</span> <span id="UpDown">-</span></div>
+          <div class="card-body" id="uploadBody">
+            <h5 class="card-title">Recent images</h5>
+            <div id="loadingGif">
+              <center><img src="/images/loading.gif" width="80px" height="50px"></center>
+            </div>
+            <div id="picContainer">
+              <%num=2%>
+              <%oldPics= pictures.slice(-5)%>
+              <%for (let i = oldPics.length-1; i >= 0; i--) {%>
+
+                <%if(i==oldPics.length-1){%>
+
+                    <img src="/images/copy.png" height="20px" width="20px" name= <%=oldPics[i].url%> id="recent1">&nbsp <b><%=oldPics[i].title%></b><br>
+
+                <%} else{%>
+
+
+                  <img src="/images/copy.png" height="20px" width="20px" name=<%=oldPics[i].url%> id="recent<%=num%>">&nbsp <%=oldPics[i].title%><br>
+
+                  <%num=num+1%>
+                <%}%>
+
+              <%}%>
+            </div>
+            <p class="card-text">
+              <form id="submitPic" action="image-upload" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    Title:
+                    <input type="title" name="title" class="form-control"></input></p>
+                    Image:
+                   <input id="image" type="file" name="image"  class="form-control-file" >
+                   <input type="hidden" name="username" value=<%=cognitoUser %>></p>
+                   <button class="btn btn-primary">Submit</button>
+                </form>
+          </div>
+        </div>
+
+
+
+
+
+    </div>
+  </div>
+</body>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+    <script>
+    tinymce.init({
+      selector: '#mytextarea',
+      plugins: "image codesample",
+      toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent codesample image',
+      branding: false
+    });
+
+  </script>
+  <script src="/javascript/dash.js"></script>
+  <script>
+  window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+}
+</script>
+
+</html>

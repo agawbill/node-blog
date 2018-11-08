@@ -1,0 +1,137 @@
+.dash-text {
+  float: left;
+  color: white !important;
+}
+.dash-text2 {
+  float: right;
+  color: white !important;
+}
+
+.uploadContainer {
+  width: 94%;
+  margin: 0 auto;
+  position: inherit;
+}
+
+.cardHead {
+  display: inline;
+  background-color: #ebebeb;
+  width: inherit;
+}
+.myPostings {
+  font-size: 30px;
+}
+
+.links {
+  padding: 10px;
+  color: white;
+}
+
+#uploadImage {
+  order: 3;
+}
+
+#composeBlog {
+  padding-bottom: 16px;
+  order: 1;
+}
+
+#myPost {
+  order: 2;
+}
+
+#listId {
+  display: none;
+}
+
+#listLink {
+  float: right;
+}
+#addMore {
+  width: 100%;
+}
+#UpDown {
+  font-size: 30px;
+  float: right;
+}
+#UpDown2 {
+  font-size: 30px;
+  float: left;
+}
+
+#uploadHeader:hover {
+  cursor: pointer;
+}
+
+#loadingGif {
+  display: none;
+}
+
+#recent1:hover {
+  cursor: pointer;
+}
+#recent2 {
+  cursor: pointer;
+}
+#recent3 {
+  cursor: pointer;
+}
+#recent4 {
+  cursor: pointer;
+}
+#recent5 {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .uploadContainer {
+    width: 22.5%;
+    padding: 5px;
+    position: fixed;
+    right: 35px;
+    bottom: 0px;
+  }
+
+  #uploadImage {
+    order: 3;
+  }
+
+  #composeBlog {
+    order: 2;
+  }
+
+  #myPost {
+    order: 1;
+  }
+}
+
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+/* @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .uploadContainer {
+    width: 25%;
+    padding: 5px;
+    position: fixed;
+    right: 35px;
+    bottom: 0px;
+  }
+  #uploadImage {
+    order: 3;
+  }
+
+  #composeBlog {
+    order: 2;
+  }
+
+  #myPost {
+    order: 1;
+  }
+} */
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
