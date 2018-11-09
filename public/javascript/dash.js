@@ -129,7 +129,7 @@ $.ajax({
           posts[i]._id +
           "'>Edit</a> | <a class='class='alert-link' href='post/delete/" +
           posts[i]._id +
-          " ?_method=DELETE'>Delete</a></span>";
+          "?_method=DELETE'>Delete</a></span>";
         list.appendChild(node);
       }
     } else {
