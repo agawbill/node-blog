@@ -5,7 +5,7 @@ This is a simple blog app that I created using the Node.js runtime and the Expre
 
 <h2>Guest login</h2><br>
 
-<b>URL to login:</b> http://nodeblog-env.jw9p8rcwmp.us-east-1.elasticbeanstalk.com/login
+<b>URL to login:</b> http://nodeblog-env.jw9p8rcwmp.us-east-1.elasticbeanstalk.com
 
 <b>Username:</b> CognitoGuest1@gmail.com<br>
 (username is case sensitive)<br>
