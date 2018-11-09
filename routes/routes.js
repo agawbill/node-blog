@@ -180,7 +180,7 @@ router.delete("/post/delete/:id", (req, res, next) => {
   } else {
     Post.findByIdAndRemove(req.params.id, (err, post) => {
       if (err) return next(err);
-      res.send("Deleted successfully");
+      res.redirect("/dashboard");
     });
   }
 });
